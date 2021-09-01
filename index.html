@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>canvas</title>
+</head>
+<style type="text/css">
+	#teste{
+		border: 5px outset grey;
+		display: block;
+	}
+</style>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+<body>
+
+	
+<div class="container">
+	<!-- NOME -->
+  <div class="mb-3">
+  <label for="nome" class="form-label">Name</label>
+  <input type="text" class="form-control" id="nome" placeholder="Name">
+  <!-- rANK -->
+  <label for="form-select" class="form-label">Rank</label>
+  <select class="form-select" aria-label="Default select example" id="selecionado">
+  <option value="0">Soldado🎽 (1 dia)</option>
+  <option value="1">Cabo🎗 (2 dias)</option>
+  <option value="2">Terceiro Sargento🥉 (3-5 dias)</option>
+    <option value="3">Segundo Sargento🥈 (6-10 dias)</option>
+  <option value="4">Primeiro Sargento🥇 (11-13 dias)</option>
+  <option value="5">Subtenente ⚜ (14-15 dias)</option>
+    <option value="6">Aspirante a Oficial ⚜⚜ (16-20 dias)</option>
+  <option value="7">Segundo Tenente🏅 (21-23 dias)</option>
+  <option value="8">Primeiro Tenente🎖 (24 dias) </option>
+    <option value="9">Capitão🎖🎖 (25 dias)</option>
+  <option value="10">Major 🎖🎖🎖 (26 dias)</option>
+  <option value="11">Coronel ⭐⭐ (27 dias)</option>
+  <option value="12">General de Exército ⭐⭐⭐ (28 dias)</option>
+  <option value="13">Rei 👑 (29 dias)</option>
+  <option value="14">Monge ♾ (30 dias)</option>
+</select>
+
+<button type="button" id="botao" onclick="gerar()" class="btn btn-primary">generate</button>
+</div>
+	
+  
+	<canvas id="teste" height="500px" width="500px">
+</canvas>
+<button type="button" id="botao" onclick="dload()" class="btn btn-primary">Download</button>
+<div id="divbaixar">
+	
+</div>
+</div>
+
+
+</body>
+<script type="text/javascript">
+	let nome="";
+	let canvas = document.getElementById('teste')
+
+	let contexto = canvas.getContext('2d')
+
+	
+	let ranksemoji = ['🎽','🎗','🥉','🥈','🥇','⚜','⚜⚜','🏅','🎖','🎖🎖','🎖🎖🎖','⭐⭐','⭐⭐⭐','👑','♾']
+
+
+	function setidioma(idioma) {
+		if (idioma == "ptbr") {
+			palavras = ["Promovido","a"]
+
+			ranks = ['Soldado','Cabo','3º Sargento','2º Sargento','1º Sargento','Subtenente','Aspirante a Oficial','2º Tenente','1º Tenente','Capitão','Major','Coronel','G. de Exército','Rei','Monge']
+		}else if(idioma == 'en'){
+
+			palavras = ["Promoted","The"]
+
+			ranks = ['Soldier','Cape','3rd Sergeant','2nd Sergeant','1st Sergeant','Lieutenant','Aspiring Officer','2nd Lieutenant','1st Lieutenant','Captain','Major ','Colonel','G. of Army','King','Monk']
+		}
+	}
+
+	setidioma("ptbr")
+	function gerar() {
+		contexto.font='60px sans-serif'
+		
+		carregarimg()
+	}
+
+	//Gerar imagem
+	function carregarimg() {
+
+		imgbase= new Image();
+		imgbase.src = "ccle.png"
+
+		
+		imgbase.onload = function () {
+			contexto.drawImage(imgbase,0,0,500,500)
+			formatonome()
+		}
+	}
+	//Gerar Nome
+	function formatonome(){
+		nome = document.getElementById('nome').value
+		contexto.fillStyle="yellow"
+		if (nome == "") {
+			nome="unknown"
+		}
+		contexto.textAlign = 'center'
+		contexto.fillText(nome,250,160)
+		//if (nome.length  <= 4) {
+		//	
+		//}
+		contexto.fillStyle="white"
+		texto()
+	}
+
+	//Gerar patente e emoji
+	function texto(){
+		contexto.fillStyle="white"
+		rank = document.getElementById('selecionado').value
+		contexto.fillText(palavras[0],250,210)//promovido
+		if(ranks[rank].length >= 10){
+			console.log('rank grande')
+			contexto.font='45px sans-serif'
+			contexto.fillText(palavras[1],250,245)//a
+			contexto.font='60px sans-serif'
+			contexto.fillText(ranks[rank],250,300)//soldado
+		}else{
+			contexto.fillText(palavras[1],120,260)//a
+			contexto.fillText(ranks[rank],280,260)//soldado
+		}
+		
+
+		//emoji
+		contexto.fillText(ranksemoji[rank],250,410)
+	}
+
+	function dload() {
+		let canvas = document.getElementById('teste')
+    	let img    = canvas.toDataURL("image/png");
+    	divbaixar= document.getElementById('divbaixar')
+    	divbaixar.innerHTML = '<img src="'+img+'"/>'
+	}
+
+
+
+	//contexto.fillStyle="green"
+	
+	//contexto.fillRect(0,0,250,250)
+
+	//teste add imagem
+	
+
+
+
+	
+	
+	
+
+</script>
+</html>
