@@ -142,7 +142,9 @@
 		let canvas = document.getElementById('teste')
     	let img    = canvas.toDataURL("image/png");
     	divbaixar= document.getElementById('divbaixar')
-    	divbaixar.innerHTML = '<img id="divbaixar" src="'+img+'"/>'
+    	let imenda = '"divbaixar"'
+
+    	divbaixar.innerHTML = '<img id='+imenda+' src="'+img+'"/>'
 	}
 
 
