@@ -52,7 +52,7 @@
 	<canvas id="teste" height="500px" width="500px">
 </canvas>
 <button type="button" id="botao" onclick="dload()" class="btn btn-primary">Download</button>
-<div id="divbaixar">
+<div id="divbaixadsakdl">
 	
 </div>
 </div>
@@ -142,7 +142,7 @@
 		let canvas = document.getElementById('teste')
     	let img    = canvas.toDataURL("image/png");
     	divbaixar= document.getElementById('divbaixar')
-    	divbaixar.innerHTML = '<img src="'+img+'"/>'
+    	divbaixar.innerHTML = '<img id="divbaixar" src="'+img+'"/>'
 	}
 
 
