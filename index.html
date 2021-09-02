@@ -9,11 +9,9 @@
 <style type="text/css">
 	#teste{
 		border: 5px outset grey;
-		width: 100%;
 		display: block;
 	}
 	#imgbaixar{
-		width: 100%;
 	}
 </style>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
@@ -49,7 +47,7 @@
 </div>
 	
   
-	<canvas id="teste" height="500px" width="500px">
+	<canvas id="teste" height="500px" width="500px" class="img-fluid">
 </canvas>
 <button type="button" id="botao" onclick="dload()" class="btn btn-primary">Download</button>
 <div id="divbaixarconteudo">
@@ -143,7 +141,7 @@
     	let img    = canvas.toDataURL("image/png");
     	divbaixar= document.getElementById('divbaixarconteudo')
 
-    	divbaixar.innerHTML = '<img id="imgbaixar" src="'+img+'"/>'
+    	divbaixar.innerHTML = '<img class="img-fluid" src="'+img+'"/>'
 	}
 
 
