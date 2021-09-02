@@ -12,7 +12,7 @@
 		width: 100%;
 		display: block;
 	}
-	#divbaixar{
+	#imgbaixar{
 		width: 100%;
 	}
 </style>
@@ -52,7 +52,7 @@
 	<canvas id="teste" height="500px" width="500px">
 </canvas>
 <button type="button" id="botao" onclick="dload()" class="btn btn-primary">Download</button>
-<div id="divbaixadsakdl">
+<div id="divbaixarconteudo">
 	
 </div>
 </div>
@@ -141,9 +141,9 @@
 	function dload() {
 		let canvas = document.getElementById('teste')
     	let img    = canvas.toDataURL("image/png");
-    	divbaixar= document.getElementById('divbaixar')
+    	divbaixar= document.getElementById('divbaixarconteudo')
 
-    	divbaixar.innerHTML = '<img src="'+img+'"/>'
+    	divbaixar.innerHTML = '<img id="imgbaixar" src="'+img+'"/>'
 	}
 
 
