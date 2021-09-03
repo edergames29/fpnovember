@@ -8,8 +8,13 @@
 </head>
 <style type="text/css">
 	#teste{
-		border: 5px outset grey;
+		border: 3px inset #e3eeff;
 		display: block;
+	}
+	#teste:hover{
+		border: 3px outset #e3eeff;
+		display: block;
+		opacity: 0.9;
 	}
 	#imgbaixar{
 	}
@@ -41,6 +46,13 @@
   <option value="12">General de Exército ⭐⭐⭐ (28 dias)</option>
   <option value="13">Rei 👑 (29 dias)</option>
   <option value="14">Monge ♾ (30 dias)</option>
+</select>
+
+<label for="form-select" class="form-label">Idioma</label>
+  <select class="form-select" aria-label="Default select example" id="idiomaselect">
+  <option value="ptbr">Portuguese</option>
+  <option value="en">English</option>
+  <option value="es">Spanish</option>
 </select>
 
 <button type="button" id="botao" onclick="gerar()" class="btn btn-primary">generate</button>
@@ -77,11 +89,18 @@
 			palavras = ["Promoted","The"]
 
 			ranks = ['Soldier','Cape','3rd Sergeant','2nd Sergeant','1st Sergeant','Lieutenant','Aspiring Officer','2nd Lieutenant','1st Lieutenant','Captain','Major ','Colonel','G. of Army','King','Monk']
+		}else if(idioma == 'es'){
+
+			palavras = ["Promocionado", "a"]
+
+			ranks = ['Soldado', 'Cabo', '3er Sargento', '2do Sargento', '1er Sargento', 'Teniente', 'Aspirante a Oficial', '2do Teniente', '1er Teniente', 'Capitán', 'Mayor' , 'Coronel', 'G. of Army ',' King ',' Monk ']
 		}
 	}
 
 	setidioma("ptbr")
 	function gerar() {
+		setidioma(document.getElementById("idiomaselect").value)
+
 		contexto.font='60px sans-serif'
 		
 		carregarimg()
@@ -104,7 +123,7 @@
 		nome = document.getElementById('nome').value
 		contexto.fillStyle="yellow"
 		if (nome == "") {
-			nome="unknown"
+			nome="Unknown"
 		}
 		contexto.textAlign = 'center'
 		contexto.fillText(nome,250,160)
@@ -124,11 +143,14 @@
 			console.log('rank grande')
 			contexto.font='45px sans-serif'
 			contexto.fillText(palavras[1],250,245)//a
-			contexto.font='60px sans-serif'
+			contexto.font='60px arial'
+			contexto.fillStyle="yellow"
 			contexto.fillText(ranks[rank],250,300)//soldado
 		}else{
 			contexto.fillText(palavras[1],120,260)//a
-			contexto.fillText(ranks[rank],280,260)//soldado
+			contexto.font='60px sans-serif'
+			contexto.fillStyle="yellow"
+			contexto.fillText(ranks[rank],280,270)//soldado
 		}
 		
 
