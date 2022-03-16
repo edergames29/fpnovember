@@ -3,4 +3,4 @@ Fpnovember application.
 
  https://edergames29.github.io/fpnovember/
 
-    Cria uma imagem com titulo editável.
+    Cria uma imagem com titulo editável, ainda falta automatizar os layouts.
